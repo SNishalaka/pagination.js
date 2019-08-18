@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo for Pagination.js</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+            <section>
+                    <h1>Placeholder Services</h1>
+                    <div class="data-container">
+                      <ul class="data-container__list">
+                        <li>
+                          <a href="//placehold.it" target="_blank" title="Placehold It" https>
+                              <img src="//placehold.it/350x250/f0f/fff" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//dummyimage.com" target="_blank" title="Dummy Image" https>
+                              <img src="//dummyimage.com/350x250/808000/fff" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//fakeimg.pl" target="_blank" title="Fake Images Please" https>
+                              <img src="//fakeimg.pl/350x250/ffd700/fff" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//fpoimg.com" target="_blank" title="For Placement Only">
+                              <img src="//fpoimg.com/350x250" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//ipsumimage.appspot.com" target="_blank" title="Ipsum Image" https>
+                              <img src="//ipsumimage.appspot.com/350x250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//unsplash.it" target="_blank" title="Unsplash It" https>
+                              <img src="//unsplash.it/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//loremflickr.com" target="_blank" title="LoremFlickr" https>
+                              <img src="//loremflickr.com/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//placeimg.com" target="_blank" title="Place IMG" https>
+                              <img src="//placeimg.com/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//spaceholder.cc" target="_blank" title="A Space Oddity" https>
+                              <img src="//spaceholder.cc/300x250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//fillmurray.com" title="Bill Murray" https>
+                              <img src="//fillmurray.com/350/250" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//baconmockup.com" target="_blank" title="BACON without the Kevin" https>
+                              <img src="//baconmockup.com/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//placekitten.com" target="_blank" title="Kittens" https>
+                              <img src="//placekitten.com/g/350/250" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//placebear.com" target="_blank" title="A grizzly experience" https>
+                              <img src="//placebear.com/350/250" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//placebeard.it" target="_blank" title="Bear with a D" https>
+                              <img src="//placebeard.it/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//www.placecage.com" target="_blank" title="Cage" https>
+                              <img src="//www.placecage.com/350/250" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="//cageme.herokuapp.com" target="_blank" title="Oh no Cage again" https>
+                              <img src="//cageme.herokuapp.com/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//www.stevensegallery.com" target="_blank" title="Steven Seagal" https>
+                              <img src="//www.stevensegallery.com/350/250" />
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="//placezombie.com" target="_blank" title="World War Z" https>
+                              <img src="//placezombie.com/350x250" />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  
+                    <div class="pagination-container"></div>
+                  </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+    <script>
+        function renderHtml(data) {
+  let html = '<ul class="data-container__list">';
+
+  data.forEach(function(element) {
+    html += "<li>" + element.innerHTML + "</li>";
+  });
+
+  html += "</ul>";
+  return html;
+}
+
+$(".pagination-container").pagination({
+  dataSource: function(done) {
+    let result = [];
+    let reviews = document.querySelectorAll(".data-container__list > li");
+
+    reviews.forEach(function(element) {
+      result.push(element);
+    });
+
+    done(result);
+  },
+  pageSize: 12,
+  callback: function(data, pagination) {
+    let html = renderHtml(data);
+    document.querySelector(".data-container").innerHTML = html;
+  }
+});
+
+    </script>
+
+</body>
+</html>
